@@ -1,10 +1,12 @@
-import { Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text } from 'react-native'
+import React from 'react'
 
-export default function Index() {
+const Home = () => {
   return (
-    <SafeAreaView className="flex justify-center items-center h-full">
-      <Text className="text-red-500">Uber Clone</Text>
-    </SafeAreaView>
-  );
+    <View>
+      <Text>Home Page</Text>
+    </View>
+  )
 }
+
+export default Home
