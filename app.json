@@ -4,12 +4,12 @@
     "slug": "ryde",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/logo.png",
     "scheme": "ryde",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/splashes.png",
       "resizeMode": "contain",
       "backgroundColor": "#2F80ED"
     },
@@ -18,7 +18,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/adaptive-icons.png",
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true
