@@ -134,7 +134,8 @@ const signUp = () => {
                 <ReactNativeModal
                     isVisible={verification.state === "pending"}
                     onModalHide={() => {
-                        if(verification.state === "success") setShowSuccessModal(true)}
+                        if (verification.state === "success") setShowSuccessModal(true)
+                    }
                     }
                 >
                     <View className='bg-white px-7 py-9 rounded-2xl min-h-[300px]'>
@@ -149,7 +150,7 @@ const signUp = () => {
                             icon={icons.lock}
                             placeholder='12345'
                             keyboardType='numeric'
-                            onChangeText={(code)=>
+                            onChangeText={(code) =>
                                 setVerification({
                                     ...verification,
                                     code: code
@@ -187,8 +188,11 @@ const signUp = () => {
                         </Text>
 
                         <CustomButton
-                            title='Brows Home'
-                            onPress={() => router.replace("/(root)/(tabs)/home")}
+                            title='Browse Home'
+                            onPress={() => {
+                                setShowSuccessModal(false); 
+                                router.push("/(root)/(tabs)/home") }
+                            }
                             className='mt-5'
                         />
                     </View>
