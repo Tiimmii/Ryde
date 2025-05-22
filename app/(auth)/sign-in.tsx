@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image } from 'react-native'
+import { View, Text, ScrollView, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { icons, images } from '@/constants'
 import InputField from '@/components/InputField'
@@ -34,10 +34,10 @@ const signIn = () => {
                 // complete further steps.
                 console.error(JSON.stringify(signInAttempt, null, 2))
             }
-        } catch (err) {
+        } catch (err: any) {
             // See https://clerk.com/docs/custom-flows/error-handling
             // for more info on error handling
-            console.error(JSON.stringify(err, null, 2))
+            Alert.alert("Error", err.errors[0].longMessage)
         }
     }
 
