@@ -143,7 +143,7 @@ const signUp = () => {
                 <ReactNativeModal
                     isVisible={verification.state === "pending"}
                     onModalHide={() => {
-                        if (verification.state === "success") setShowSuccessModal(true)
+                        if (verification.state === "success") {setShowSuccessModal(true)}
                     }
                     }
                 >
