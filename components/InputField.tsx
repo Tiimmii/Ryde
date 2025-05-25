@@ -24,7 +24,7 @@ const InputField = ({
 }: InputFieldProps) => {
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            behavior={Platform.OS === "ios" ? "padding" : "padding"}
         >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View className="my-2 w-full">

@@ -1,15 +1,22 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { router } from 'expo-router'
+import { Redirect, router } from 'expo-router'
 import Swiper from "react-native-swiper"
 import { onboarding } from '@/constants'
 import CustomButton from '@/components/CustomButton'
+import { useAuth } from '@clerk/clerk-expo'
 
 const welcome = () => {
     const swiperRef = useRef<Swiper>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const isLastSlide = activeIndex === onboarding.length -1;
+
+    const { isSignedIn } = useAuth();
+    
+      if (isSignedIn) {
+        return <Redirect href={'/(root)/(tabs)/home'} />
+    }
 
     return (
         <SafeAreaView className="flex h-full items-center justify-between bg-white">
@@ -47,7 +54,7 @@ const welcome = () => {
             <CustomButton
                 title={isLastSlide? "Get Started": "Next"}
                 onPress={()=> isLastSlide? router.replace("/(auth)/sign-up"): swiperRef.current?.scrollBy(1)}
-                className='w-[90%] mt-10'
+                className='!w-[90%] mt-10'
             />
         </SafeAreaView>
     )
