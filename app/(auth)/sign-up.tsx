@@ -74,7 +74,7 @@ const signUp = () => {
                 setVerification({
                     ...verification, state: "success"
                 })
-                router.replace('/(root)/(tabs)/home')
+                setShowSuccessModal(true)
             } else {
                 // If the status is not complete, check why. User may need to
                 // complete further steps.
@@ -143,9 +143,10 @@ const signUp = () => {
                 <ReactNativeModal
                     isVisible={verification.state === "pending"}
                     onModalHide={() => {
-                        if (verification.state === "success") {setShowSuccessModal(true)}
+                        if (verification.state === "success") { setShowSuccessModal(true) }
                     }
                     }
+                    coverScreen={true}
                 >
                     <View className='bg-white px-7 py-9 rounded-2xl min-h-[300px]'>
                         <Text className='text-2xl font-JakartaExtraBold mb-2'>
@@ -183,7 +184,7 @@ const signUp = () => {
                 </ReactNativeModal>
                 <ReactNativeModal isVisible={
                     showSuccessModal
-                }>
+                } coverScreen={true}>
                     <View className='bg-white px-7 py-9 rounded-2xl min-h-[300px]'>
                         <Image
                             source={images.check}
