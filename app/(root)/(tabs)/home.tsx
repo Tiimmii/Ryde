@@ -1,10 +1,14 @@
-import GoogleTextInput from '@/components/GoogleTextInput'
-import RideCard from '@/components/RideCard'
-import { icons, images } from '@/constants'
-import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
-import { Link } from 'expo-router'
-import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import GoogleTextInput from '@/components/GoogleTextInput';
+import * as Location from "expo-location";
+import Map from '@/components/Map';
+import RideCard from '@/components/RideCard';
+import { icons, images } from '@/constants';
+import { useLocationStore } from '@/store';
+import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo';
+import { Link } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const recentRides = [
   {
@@ -108,7 +112,8 @@ const recentRides = [
 export default function Page() {
   const { user } = useUser()
   const loading = false
-
+  const { setUserLocation, setDestinationLocation } = useLocationStore();
+  const [hasPermissions, setHasPermissions] = useState(false);
   const handleSignOut = () => {
 
   }
@@ -116,6 +121,32 @@ export default function Page() {
   const handleDestinationPress = () => {
 
   }
+
+  useEffect(() => {
+    const requestLocation = async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+
+      if (status !== "granted") {
+        setHasPermissions(false)
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync();
+
+      const address = await Location.reverseGeocodeAsync({
+        latitude: location.coords?.latitude!,
+        longitude: location.coords?.longitude!
+      })
+
+      setUserLocation({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+      address: `${address[0].name}, ${address[0].region}`
+    })
+    }
+
+    requestLocation();
+  }, [])
 
   return (
     <SafeAreaView className='bg-general-500'>
@@ -147,18 +178,18 @@ export default function Page() {
               <Text className='text-2xl capitalizer font-JakartaExtraBold'>
                 Welcome, {user?.firstName || user?.emailAddresses[0].emailAddress.split("@")[0]}{" "} 👋
               </Text>
-              <TouchableOpacity onPress={handleSignOut} className='justify-center items-center w-10 h-10 rounded-full bg-white'>
+              <TouchableOpacity onPress={handleSignOut} className='items-center justify-center w-10 h-10 bg-white rounded-full'>
                 <Image source={icons.out} className='w-4 h-4' />
               </TouchableOpacity>
             </View>
             {/* <GoogleTextInput handlePress={handleDestinationPress} containerStyle='bg-white shadow-md shadow-neutral-300'
             /> */}
             <>
-              <Text className='text-xl font-JakartaBold mt-5 mb-3'>Your Current Location</Text>
-              <View className='flex flex-row items-center'>
-                {/* <Map/> */}
+              <Text className='mt-5 mb-3 text-xl font-JakartaBold'>Your Current Location</Text>
+              <View className="flex flex-row items-center bg-transparent h-[300px]">
+                <Map />
               </View>
-              <Text className='text-xl font-JakartaBold mt-5 mb-3'>Recent Rides</Text>
+              <Text className='mt-5 mb-3 text-xl font-JakartaBold'>Recent Rides</Text>
             </>
           </>
         )}

@@ -24,10 +24,11 @@ const InputField = ({
 }: InputFieldProps) => {
     return (
         <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "padding"}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={{ flex: 1 }}
         >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View className="my-2 w-full">
+                <View className="my-2 w-full flex-1">
                     <Text className={`text-lg font-JakartaSemiBold mb-3 ${labelStyle}`}>
                         {label}
                     </Text>

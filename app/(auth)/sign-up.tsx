@@ -147,6 +147,9 @@ const signUp = () => {
                     }
                     }
                     coverScreen={true}
+                    hasBackdrop={true}       // Shows a dark background
+                    backdropColor="black"    // Customize dark overlay color
+                    backdropOpacity={0.7}
                 >
                     <View className='bg-white px-7 py-9 rounded-2xl min-h-[300px]'>
                         <Text className='text-2xl font-JakartaExtraBold mb-2'>
