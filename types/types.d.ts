@@ -7,7 +7,7 @@ declare interface Driver {
     profile_image_url: string;
     car_image_url: string;
     car_seats: number;
-    rating: number;
+    rating: number | string;
 }
 
 declare interface MarkerData {
