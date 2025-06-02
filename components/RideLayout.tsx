@@ -36,7 +36,7 @@ const RideLayout = ({ children, title, snapPoints }: { children: React.ReactNode
                     snapPoints={snapPoints || ["40%", "85%"]}
                     index={0}
                 >
-                    {title === "Choose a Rider" ? (
+                    {title !== "Choose a Rider" ? (
                         <BottomSheetView
                             style={{
                                 flex: 1,
