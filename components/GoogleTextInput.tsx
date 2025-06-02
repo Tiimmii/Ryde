@@ -13,6 +13,7 @@ const GoogleTextInput = ({
   textInputBackgroundColor,
   handlePress,
 }: GoogleInputProps) => {
+
   return (
     <View
       className={`flex flex-row items-center justify-center relative z-50 rounded-xl ${containerStyle}`}
@@ -21,6 +22,41 @@ const GoogleTextInput = ({
         fetchDetails={true}
         placeholder="Search"
         debounce={200}
+        autoFillOnNotFound={false}
+        currentLocation={false}
+        currentLocationLabel="Current location"
+        disableScroll={false}
+        enableHighAccuracyLocation={true}
+        enablePoweredByContainer={true}
+        filterReverseGeocodingByTypes={[]}
+        GooglePlacesDetailsQuery={{}}
+        GooglePlacesSearchQuery={{
+          rankby: 'distance',
+          type: 'restaurant',
+        }}
+        GoogleReverseGeocodingQuery={{}}
+        isRowScrollable={true}
+        keyboardShouldPersistTaps="always"
+        listUnderlayColor="#c8c7cc"
+        listViewDisplayed="auto"
+        keepResultsAfterBlur={false}
+        minLength={1}
+        nearbyPlacesAPI="GooglePlacesSearch"
+        numberOfLines={1}
+        onFail={() => {
+          console.warn('Autocomplete failed');
+        }}
+        onNotFound={() => {
+          console.log('No results found');
+        }}
+        onTimeout={() =>
+          console.warn('Google Places Autocomplete: Request timeout')
+        }
+        predefinedPlaces={[]}
+        predefinedPlacesAlwaysVisible={false}
+        suppressDefaultStyles={false}
+        textInputHide={false}
+        timeout={20000}
         styles={{
           textInputContainer: {
             alignItems: "center",
@@ -64,7 +100,7 @@ const GoogleTextInput = ({
           language: "en",
         }}
         renderLeftButton={() => (
-          <View className="justify-center items-center w-6 h-6">
+          <View className="items-center justify-center w-6 h-6">
             <Image
               source={icon ? icon : icons.search}
               className="w-6 h-6"

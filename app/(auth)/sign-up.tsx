@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image, Alert } from 'react-native'
+import { View, Text, ScrollView, Image, Alert, KeyboardAvoidingView, Platform } from 'react-native'
 import React, { useState } from 'react'
 import { icons, images } from '@/constants'
 import InputField from '@/components/InputField'
@@ -104,38 +104,44 @@ const signUp = () => {
                         source={images.signUpCar}
                         className='z-0 w-full h-[250px]'
                     />
-                    <Text className='text-2xl text-black font-JakartaSemiBold absolute bottom-5 left-5'>
+                    <Text className='absolute text-2xl text-black font-JakartaSemiBold bottom-5 left-5'>
                         Create Your Account
                     </Text>
                 </View>
                 <View className='p-5'>
-                    <InputField
-                        label='Name'
-                        placeholder='Enter your name'
-                        icon={icons.person}
-                        value={form.name}
-                        onChangeText={(value) => setForm({ ...form, name: value })}
-                    />
-                    <InputField
-                        label='Email'
-                        placeholder='Enter your email'
-                        icon={icons.email}
-                        value={form.email}
-                        onChangeText={(value) => setForm({ ...form, email: value })}
-                    />
-                    <InputField
-                        label='Password'
-                        placeholder='Enter your password'
-                        icon={icons.lock}
-                        value={form.password}
-                        secureTextEntry={true}
-                        onChangeText={(value) => setForm({ ...form, password: value })}
-                    />
+                    <KeyboardAvoidingView
+                        behavior={Platform.OS === "ios" ? "padding" : "height"}
+                        style={{ flex: 1 }}
+                    >
+                        <InputField
+                            label='Name'
+                            placeholder='Enter your name'
+                            icon={icons.person}
+                            value={form.name}
+                            onChangeText={(value) => setForm({ ...form, name: value })}
+                        />
+                        <InputField
+                            label='Email'
+                            placeholder='Enter your email'
+                            icon={icons.email}
+                            value={form.email}
+                            onChangeText={(value) => setForm({ ...form, email: value })}
+                        />
+                        <InputField
+                            label='Password'
+                            placeholder='Enter your password'
+                            icon={icons.lock}
+                            value={form.password}
+                            secureTextEntry={true}
+                            onChangeText={(value) => setForm({ ...form, password: value })}
+                        />
+                    </KeyboardAvoidingView>
+
                     <CustomButton title='Sign up' onPress={onSignUpPress} className='mt-6' />
 
                     <OAuth />
 
-                    <Link href={"/sign-in"} className='text-lg text-center text-general-200 mt-10'>
+                    <Link href={"/sign-in"} className='mt-10 text-lg text-center text-general-200'>
                         <Text>Already have an account?</Text>
                         <Text className='text-primary-500'>Log in</Text>
                     </Link>
@@ -152,10 +158,10 @@ const signUp = () => {
                     backdropOpacity={0.7}
                 >
                     <View className='bg-white px-7 py-9 rounded-2xl min-h-[300px]'>
-                        <Text className='text-2xl font-JakartaExtraBold mb-2'>
+                        <Text className='mb-2 text-2xl font-JakartaExtraBold'>
                             Verification
                         </Text>
-                        <Text className='font-Jakarta mb-5'>
+                        <Text className='mb-5 font-Jakarta'>
                             We've sent a verification code to {form.email}
                         </Text>
                         <InputField
@@ -172,7 +178,7 @@ const signUp = () => {
                         />
                         {
                             verification.error && (
-                                <Text className='text-red-500 text-sm mt-1'>
+                                <Text className='mt-1 text-sm text-red-500'>
                                     {verification.error}
                                 </Text>
                             )
@@ -193,10 +199,10 @@ const signUp = () => {
                             source={images.check}
                             className='w-[110px] h-[110px] mx-auto my-5'
                         />
-                        <Text className='text-3xl font-JakartaBold text-center'>
+                        <Text className='text-3xl text-center font-JakartaBold'>
                             Verified
                         </Text>
-                        <Text className='text-base text-gray-400 font-Jakarta text-center mt-2'>
+                        <Text className='mt-2 text-base text-center text-gray-400 font-Jakarta'>
                             You have successfully verified your account.
                         </Text>
 

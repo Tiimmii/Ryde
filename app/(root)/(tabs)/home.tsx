@@ -5,7 +5,7 @@ import RideCard from '@/components/RideCard';
 import { icons, images } from '@/constants';
 import { useLocationStore } from '@/store';
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -118,8 +118,10 @@ export default function Page() {
 
   }
 
-  const handleDestinationPress = () => {
+  const handleDestinationPress = (location: { latitude: number, longitude: number, address: string}) => {
+      setDestinationLocation(location);
 
+      router.push("/(root)/find-ride");
   }
 
   useEffect(() => {
@@ -182,8 +184,13 @@ export default function Page() {
                 <Image source={icons.out} className='w-4 h-4' />
               </TouchableOpacity>
             </View>
-            {/* <GoogleTextInput handlePress={handleDestinationPress} containerStyle='bg-white shadow-md shadow-neutral-300'
-            /> */}
+            
+            <GoogleTextInput
+              icon={icons.search}
+              containerStyle="bg-white shadow-md shadow-neutral-300"
+              handlePress={handleDestinationPress}
+            />
+
             <>
               <Text className='mt-5 mb-3 text-xl font-JakartaBold'>Your Current Location</Text>
               <View className="flex flex-row items-center bg-transparent h-[300px]">
