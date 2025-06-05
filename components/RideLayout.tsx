@@ -19,7 +19,7 @@ const RideLayout = ({ children, title, snapPoints }: { children: React.ReactNode
                 <View className='flex flex-col h-screen bg-blue-500'>
                     <View className='absolute z-10 flex flex-row items-center justify-start px-5 top-16'>
                         <TouchableOpacity onPress={() => router.back()}>
-                            <View className='items-center justify-center w-10 h-10 bg-white rounded-full'>
+                            <View className='items-center justify-center w-10 h-10 p-5 bg-white rounded-full'>
                                 <Image source={icons.backArrow} resizeMode='contain' />
                             </View>
                         </TouchableOpacity>
@@ -33,7 +33,7 @@ const RideLayout = ({ children, title, snapPoints }: { children: React.ReactNode
                 </View>
                 <BottomSheet
                     ref={bottomSheetRef}
-                    snapPoints={snapPoints || ["40%", "85%"]}
+                    snapPoints={snapPoints || ["45%", "85%"]}
                     index={0}
                 >
                     {title !== "Choose a Rider" ? (
@@ -46,14 +46,14 @@ const RideLayout = ({ children, title, snapPoints }: { children: React.ReactNode
                             {children}
                         </BottomSheetView>
                     ) : (
-                        <BottomSheetScrollView
+                        <BottomSheetView
                             style={{
                                 flex: 1,
                                 padding: 20,
                             }}
                         >
                             {children}
-                        </BottomSheetScrollView>
+                        </BottomSheetView>
                     )}
                 </BottomSheet>
             </View>
