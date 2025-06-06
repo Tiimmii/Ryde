@@ -9,7 +9,7 @@ import { calculateRegion, generateMarkersFromData, calculateDriverTimes } from "
 import { Driver, MarkerData } from "@/types/types";
 import { ActivityIndicator, Text, View } from "react-native";
 
-const directionsAPI = process.env.EXPO_PUBLIC_DIRECTIONS_API_KEY;
+const directionsAPI = process.env.EXPO_PUBLIC_GOOGLE_API_KEY;
 
 // const drivers = [
 //     {
@@ -169,7 +169,7 @@ const Map = () => {
             }}
             apikey={directionsAPI!}
             strokeColor="#0286FF"
-            strokeWidth={2}
+            strokeWidth={4}
           />
         </>
       )}
