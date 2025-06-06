@@ -120,6 +120,11 @@ const signUp = () => {
                             value={form.name}
                             onChangeText={(value) => setForm({ ...form, name: value })}
                         />
+                    </KeyboardAvoidingView>
+                    <KeyboardAvoidingView
+                        behavior={Platform.OS === "ios" ? "padding" : "height"}
+                        style={{ flex: 1 }}
+                    >
                         <InputField
                             label='Email'
                             placeholder='Enter your email'
@@ -127,6 +132,11 @@ const signUp = () => {
                             value={form.email}
                             onChangeText={(value) => setForm({ ...form, email: value })}
                         />
+                    </KeyboardAvoidingView>
+                    <KeyboardAvoidingView
+                        behavior={Platform.OS === "ios" ? "padding" : "height"}
+                        style={{ flex: 1 }}
+                    >
                         <InputField
                             label='Password'
                             placeholder='Enter your password'

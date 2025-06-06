@@ -8,6 +8,11 @@
     "scheme": "ryde",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+     "splash": {
+      "image": "./assets/images/splashes.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2F80ED"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -25,14 +30,6 @@
         "expo-router",
         {
           "origin": "https://uber.dev/"
-        }
-      ],
-      [
-        "expo-splash-screen",
-        {
-          "backgroundColor": "#2F80ED",
-          "image": "./assets/images/splashes.png",
-          "resizeMode": "contain"
         }
       ]
     ],

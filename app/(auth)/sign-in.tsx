@@ -65,6 +65,11 @@ const signIn = () => {
                             value={form.email}
                             onChangeText={(value) => setForm({ ...form, email: value })}
                         />
+                    </KeyboardAvoidingView>
+                    <KeyboardAvoidingView
+                        behavior={Platform.OS === "ios" ? "padding" : "height"}
+                        style={{ flex: 1 }}
+                    >
                         <InputField
                             label='Password'
                             placeholder='Enter your password'
@@ -74,6 +79,7 @@ const signIn = () => {
                             onChangeText={(value) => setForm({ ...form, password: value })}
                         />
                     </KeyboardAvoidingView>
+
 
                     <CustomButton title='Sign in' onPress={onSignInPress} className='mt-6' />
 

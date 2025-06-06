@@ -8,6 +8,9 @@ import { icons } from "@/constants";
 import { formatTime } from "@/lib/utils";
 import { useDriverStore, useLocationStore } from "@/store";
 
+//npm install stripe --save
+//npm install @stripe/stripe-react-native
+
 const BookRide = () => {
   const { user } = useUser();
   const { userAddress, destinationAddress } = useLocationStore();
@@ -21,7 +24,7 @@ const BookRide = () => {
     <StripeProvider
       publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
       merchantIdentifier="merchant.com.uber"
-      urlScheme="myapp"
+      urlScheme="ryde"
     >
       <RideLayout title="Book Ride">
         <>
