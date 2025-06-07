@@ -24,7 +24,7 @@ const RideLayout = ({ children, title, snapPoints }: { children: React.ReactNode
                             router.back()
                             clearSelectedDriver();
                             }}>
-                            <View className='items-center justify-center w-10 h-10 p-5 bg-white rounded-full'>
+                            <View className='items-center justify-center w-8 h-8 p-5 bg-white rounded-full'>
                                 <Image source={icons.backArrow} resizeMode='contain' />
                             </View>
                         </TouchableOpacity>
