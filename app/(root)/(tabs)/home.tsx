@@ -166,7 +166,6 @@ export default function Page() {
     <SafeAreaView className='bg-general-500'>
       <FlatList
         data={recentRides && recentRides.slice(0, 5)}
-        keyExtractor={( item, index )=> item.driver_id.toString()}
         renderItem={({ item }) => <RideCard ride={item} />}
         className='px-5'
         keyboardShouldPersistTaps="handled"

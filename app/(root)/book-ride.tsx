@@ -22,12 +22,12 @@ const BookRide = () => {
   )[0];
   
   return (
-    // <StripeProvider
-    //   publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
-    //   merchantIdentifier="merchant.com.uber"
-    //   urlScheme="ryde"
-    // >
-      <RideLayout title="Book Ride">
+    <StripeProvider
+      publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
+      merchantIdentifier="merchant.com.uber"
+      urlScheme="ryde"
+    >
+      <RideLayout title="Book Ride" snapPoints={["80%", "85%"]}>
         <>
           <Text className="mb-3 text-xl font-JakartaSemiBold">
             Ride Information
@@ -105,7 +105,7 @@ const BookRide = () => {
           />
         </>
       </RideLayout>
-    // </StripeProvider>
+    </StripeProvider>
   );
 };
 
