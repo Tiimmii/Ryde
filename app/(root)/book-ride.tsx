@@ -7,6 +7,7 @@ import RideLayout from "@/components/RideLayout";
 import { icons } from "@/constants";
 import { formatTime } from "@/lib/utils";
 import { useDriverStore, useLocationStore } from "@/store";
+import { useEffect } from "react";
 
 //npm install stripe --save
 //npm install @stripe/stripe-react-native
@@ -19,13 +20,13 @@ const BookRide = () => {
   const driverDetails = drivers?.filter(
     (driver) => +driver.id === selectedDriver,
   )[0];
-
+  
   return (
-    <StripeProvider
-      publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
-      merchantIdentifier="merchant.com.uber"
-      urlScheme="ryde"
-    >
+    // <StripeProvider
+    //   publishableKey={process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!}
+    //   merchantIdentifier="merchant.com.uber"
+    //   urlScheme="ryde"
+    // >
       <RideLayout title="Book Ride">
         <>
           <Text className="mb-3 text-xl font-JakartaSemiBold">
@@ -104,7 +105,7 @@ const BookRide = () => {
           />
         </>
       </RideLayout>
-    </StripeProvider>
+    // </StripeProvider>
   );
 };
 

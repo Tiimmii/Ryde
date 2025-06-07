@@ -16,7 +16,7 @@ export const generateMarkersFromData = ({
         const lngOffset = (Math.random() - 0.5) * 0.01;
 
         return {
-            id: driver.driver_id, // Map driver_id to id
+            id: driver.id,
             latitude: userLatitude + latOffset,
             longitude: userLongitude + lngOffset,
             title: `${driver.first_name} ${driver.last_name}`,

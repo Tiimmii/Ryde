@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 import { icons } from "@/constants";
@@ -6,6 +6,7 @@ import { formatTime } from "@/lib/utils";
 import { DriverCardProps } from "@/types/types";
 
 const DriverCard = ({ item, selected, setSelected }: DriverCardProps) => {
+    
     return (
         <TouchableOpacity
             onPress={setSelected}

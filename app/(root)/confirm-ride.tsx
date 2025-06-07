@@ -5,6 +5,7 @@ import CustomButton from "@/components/CustomButton";
 import DriverCard from "@/components/DriverCard";
 import RideLayout from "@/components/RideLayout";
 import { useDriverStore } from "@/store";
+import { useEffect } from "react";
 
 const ConfirmRide = () => {
 //     const drivers = [

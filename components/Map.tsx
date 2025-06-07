@@ -62,6 +62,8 @@ const Map = () => {
   const { data: drivers, loading, error } = useFetch<Driver[]>("/(api)/driver");
   const [markers, setMarkers] = useState<MarkerData[]>([]);
 
+  
+
   useEffect(() => {
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
