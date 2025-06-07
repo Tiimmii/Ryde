@@ -5,9 +5,11 @@ import InputField from '@/components/InputField'
 import CustomButton from '@/components/CustomButton'
 import { Link, router } from 'expo-router'
 import OAuth from '@/components/OAuth'
-import { useSignIn } from '@clerk/clerk-expo'
+import { useAuth, useSignIn } from '@clerk/clerk-expo'
+import { Redirect } from 'expo-router'
 
 const signIn = () => {
+
     const { signIn, setActive, isLoaded } = useSignIn()
     const [form, setForm] = useState({
         email: "",

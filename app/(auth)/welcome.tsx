@@ -8,21 +8,23 @@ import CustomButton from '@/components/CustomButton'
 import { useAuth } from '@clerk/clerk-expo'
 
 const welcome = () => {
-    const swiperRef = useRef<Swiper>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
-    const isLastSlide = activeIndex === onboarding.length -1;
 
     const { isSignedIn } = useAuth();
-    
-      if (isSignedIn) {
+
+    if (isSignedIn) {
         return <Redirect href={'/(root)/(tabs)/home'} />
     }
 
+
+    const swiperRef = useRef<Swiper>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const isLastSlide = activeIndex === onboarding.length - 1;
+
     return (
-        <SafeAreaView className="flex h-full items-center justify-between bg-white">
+        <SafeAreaView className="flex items-center justify-between h-full bg-white">
             <TouchableOpacity
                 onPress={() => router.replace("/(auth)/sign-up")}
-                className='w-full flex justify-end items-end p-5'
+                className='flex items-end justify-end w-full p-5'
             >
                 <Text className='text-black text-md font-JakartaBold'>Skip</Text>
             </TouchableOpacity>
@@ -40,7 +42,7 @@ const welcome = () => {
                                 resizeMode='contain'
                             />
                             <View className='flex flex-row items-center justify-center w-full mt-10'>
-                                <Text className='text-black text-3xl font-bold mx-10 text-center'>
+                                <Text className='mx-10 text-3xl font-bold text-center text-black'>
                                     {item.title}
                                 </Text>
                             </View>
@@ -52,8 +54,8 @@ const welcome = () => {
                 }
             </Swiper>
             <CustomButton
-                title={isLastSlide? "Get Started": "Next"}
-                onPress={()=> isLastSlide? router.replace("/(auth)/sign-up"): swiperRef.current?.scrollBy(1)}
+                title={isLastSlide ? "Get Started" : "Next"}
+                onPress={() => isLastSlide ? router.replace("/(auth)/sign-up") : swiperRef.current?.scrollBy(1)}
                 className='!w-[90%] mt-10'
             />
         </SafeAreaView>
